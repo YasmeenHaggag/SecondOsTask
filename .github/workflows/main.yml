@@ -1,21 +1,25 @@
 on:
- push :
-   branches:
-    - master
+  push:
+    branches:
+      - master
+    
+  
+
 
 
 jobs:
   build:
-   runs-on: ubuntu-latest
-  
-    -name: 'printig folder contents before'
-     run: ls
-    - uses: actions/checkout@v3
-    - name: "Login to docker"
-      run: docker login --username ${{secrets.DOCKER_USER}} --password dckr_pat_3LHkgeI1AlErf-Q7yy1zgD1HqIk
-    - name: "Building docker image"
-      run: docker build -t ${{secrets.DOCKER-USER}}/myimage .
-    - name: "pushong to Docker hub"
-      run: docker push ${{secrets.DOCKER-USER}}/myimage 
+    runs-on: ubuntu-latest
+    
 
+    steps:
+      - uses: actions/checkout@v3  
 
+      - name: "Login to Docker hub"
+        run: docker login --username ${{ secrets.DOCKER_NAME }} --password ${{ secrets.DOCKER_TOKEN }}
+
+      - name: "Building docker image"
+        run: docker build -t ${{ secrets.DOCKER_NAME }}/myimage .
+
+      - name: "Pushing to Docker hub"
+        run: docker push ${{ secrets.DOCKER_NAME }}/myimage
