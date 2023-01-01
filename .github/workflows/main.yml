@@ -7,7 +7,7 @@ on:
 jobs:
   build:
    runs-on: ubuntu-latest
-  steps:
+  Steps:
     -name: 'Testing'
      run: pwd
 
