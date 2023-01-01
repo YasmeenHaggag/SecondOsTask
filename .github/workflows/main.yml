@@ -7,8 +7,11 @@ on:
 jobs:
   build:
    runs-on: ubuntu-latest
-  Steps:
-    -name: 'printig folder contents'
+  steps:
+    -name: 'printig folder contents before '
+     run: ls
+    - uses: actions/checkout@v3
+    -name: 'printig folder contents after'
      run: ls
 
 
