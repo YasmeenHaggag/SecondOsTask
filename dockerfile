@@ -4,6 +4,6 @@ WORKDIR /application
 
 COPY name.java .
 
-RUN javac ahmed.java
+RUN javac name.java
 
 CMD java name
